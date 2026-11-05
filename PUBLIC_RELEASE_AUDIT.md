@@ -7,7 +7,7 @@ Result: `p2_security_gate_ready_for_researcher_reapproval_not_pushed`
 
 ## History construction
 
-The candidate was cloned from GitHub `main` and branched directly at the verified remote commit. None of the 75 private local commits was cherry-picked or merged. P2 retains the original sanitized commit and adds one versioned, exact-fingerprint security-gate revision.
+The candidate was cloned from GitHub `main` and branched directly at the verified remote commit. None of the 75 private local commits was cherry-picked or merged. P2 retains the original sanitized commit and uses additive commits for the exact-fingerprint security gate and manifest-hash correction; no history was rewritten.
 
 ## Content review
 
@@ -34,6 +34,8 @@ The public status accurately records that the restricted S1 v0.1 view has 20 int
 | Personal document metadata in release delta | none; no office document is added |
 
 Gitleaks is now verified. TruffleHog remains unavailable, so the audit does not claim cross-tool exhaustive scanning.
+
+The manifest hash table is defined over committed Git-tree file bytes. P2 corrected the earlier mixed checkout/line-ending hash convention without changing the corresponding payload files.
 
 ## Public verification
 
