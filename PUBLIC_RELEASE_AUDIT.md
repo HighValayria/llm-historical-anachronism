@@ -3,15 +3,15 @@
 Date: 2026-11-05
 Branch: `public-sync-g7c-20261105`
 Base commit: `f2cb1ceaff959f4dbf1a42ad764b5bea2a38bf26`
-Result: `candidate_prepared_not_pushed`
+Result: `p2_security_gate_ready_for_researcher_reapproval_not_pushed`
 
 ## History construction
 
-The candidate was cloned from the current GitHub `main` and branched directly at the verified remote commit. None of the 75 private local commits was cherry-picked or merged. The release delta is a file-by-file whitelist.
+The candidate was cloned from GitHub `main` and branched directly at the verified remote commit. None of the 75 private local commits was cherry-picked or merged. P2 retains the original sanitized commit and adds one versioned, exact-fingerprint security-gate revision.
 
 ## Content review
 
-The release delta contains seven files: two updated or new public project-status documents, a three-file generic temporal-filter probe, and two release-control documents. It contains no newly added workbook, archive, PDF, model output, hidden mapping, record-level adjudication or operational authorization material.
+The release delta contains eleven files: the original seven-file sanitized payload plus `.gitleaksignore` and three P2 security-control reports. It contains no newly added workbook, archive, PDF, model output, hidden mapping, record-level adjudication or operational authorization material.
 
 The public status accurately records that the restricted S1 v0.1 view has 20 internal-development records and 30 unscored qualitative references. It also states that Gold is not finalized, independent human review is incomplete, and M2 has not been implemented or run.
 
@@ -26,11 +26,14 @@ The public status accurately records that the restricted S1 v0.1 view has 20 int
 | Human-review workbook or binary attachment in release delta | none |
 | Claim-level label or adjudication dataset in release delta | none |
 | Common credential/private-key patterns in release delta | no match |
-| Gitleaks | `not_verified` — unavailable |
+| Gitleaks v8.30.0 source | official GitHub release; Windows x64 archive matched the official SHA-256 checksum |
+| Gitleaks raw control | exactly 2 legacy history and 2 legacy current-tree findings reproduced |
+| Gitleaks with exact fingerprints | full history and current tree pass with 0 unhandled findings |
+| Same-path synthetic credential | detected; exception is not file- or rule-wide |
 | TruffleHog | `not_verified` — unavailable |
 | Personal document metadata in release delta | none; no office document is added |
 
-The standard scanner gap prevents a claim of exhaustive secret scanning. The small text-only delta was nevertheless manually scoped and pattern-scanned.
+Gitleaks is now verified. TruffleHog remains unavailable, so the audit does not claim cross-tool exhaustive scanning.
 
 ## Public verification
 
@@ -48,4 +51,4 @@ The standard scanner gap prevents a claim of exhaustive secret scanning. The sma
 
 ## Approval gate
 
-The local candidate is technically suitable for researcher review. Publication still requires explicit approval of this manifest and the exact candidate commit. No push was performed during preparation.
+The P2 candidate is technically suitable for renewed researcher review. Because its commit differs from the previously approved `1755539` candidate, publication requires explicit approval of the new exact commit and updated manifest. No push was performed during P2.
